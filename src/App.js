@@ -5,10 +5,7 @@ import ShoppingList from "./components/shoppingList/ShoppingList";
 function App() {
     return (
         <div className="App">
-            <p>My app</p>
             <Menu />
-            <Recipe />
-            <ShoppingList />
         </div>
     );
 }
