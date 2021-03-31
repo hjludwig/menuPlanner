@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AddMeal from "../modals/AddMeal";
-import { FaPlus } from "react-icons/fa";
+import { FaPlus, FaPlusCircle, FaTimes } from "react-icons/fa";
+import { mealsArchive } from "../../data";
 
 const Meal = ({ name }) => {
     const [meals, setMeals] = useState([]);
@@ -8,15 +9,26 @@ const Meal = ({ name }) => {
 
     const handleSelection = e => {
         const selection = e.target.value;
-        setMeals([...meals, selection]);
-        console.log("Meals: ", meals);
+        const theMeal = mealsArchive.find(meal => meal.name === selection);
+        setMeals([...meals, theMeal]);
+
         setShowModal(false);
     };
 
     const classes = {
-        wrapper: "my-8 pb-8 border-b last:border-b-0",
+        wrapper: "my-8 pb-8 border-b last:border-b-0 relative",
         title: "text-l mb-3 uppercase text-gray-400",
-        button: "p-1 bg-gray-400 text-white rounded-full",
+        button:
+            "p-1 bg-gray-400 text-white rounded-full absolute top-0 right-0",
+        removeButton: "text-gray-400 uppercase text-xs mx-1",
+        defaultText: "text-gray-300",
+        defaultIcon: "inline",
+    };
+
+    const removeItem = meal => {
+        console.log(meal);
+        const newMeals = meals.filter(item => item.name !== meal.name);
+        setMeals(newMeals);
     };
 
     return (
@@ -36,11 +48,28 @@ const Meal = ({ name }) => {
             >
                 <FaPlus />
             </button>
-            <ul>
-                {meals.map(meal => (
-                    <li>{meal}</li>
-                ))}
-            </ul>
+            {meals.length === 0 ? (
+                <p className={classes.defaultText}>
+                    Click the <FaPlusCircle className={classes.defaultIcon} />{" "}
+                    to add a meal
+                </p>
+            ) : (
+                <ul>
+                    {meals.map(meal => (
+                        <li key={meal.uuid}>
+                            <a href={meal.url} target="blank">
+                                {meal.name}
+                            </a>
+                            <button
+                                className={classes.removeButton}
+                                onClick={() => removeItem(meal)}
+                            >
+                                <FaTimes />
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     );
 };
