@@ -3,9 +3,14 @@ module.exports = {
     darkMode: false, // or 'media' or 'class'
     theme: {
         extend: {},
+        fontFamily: {
+            sans: ["Raleway", "sans-serif"],
+        },
     },
     variants: {
-        extend: {},
+        extend: {
+            borderWidth: ["last"],
+        },
     },
     plugins: [],
 };

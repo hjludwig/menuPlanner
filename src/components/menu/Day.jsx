@@ -3,15 +3,16 @@ import AddMeal from "../modals/AddMeal";
 import Meal from "./Meal";
 
 const classes = {
-    wrapper: "p-5 border border-gray-200",
-    title: "text-2xl",
+    wrapper: "border border-gray-200 bg-white",
+    innerWrapper: "px-5",
+    title: "p-5 text-2xl border-b border-gray-200",
 };
 
 const Day = ({ day }) => {
     return (
         <div className={classes.wrapper}>
             <h3 className={classes.title}>{day}</h3>
-            <div>
+            <div className={classes.innerWrapper}>
                 <Meal name={"Lunch"} />
                 <Meal name={"Dinner"} />
             </div>
