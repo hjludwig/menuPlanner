@@ -22,3 +22,14 @@ export const mealsArchive = [
         uuid: "8d7b2df4-a872-4caf-b297-8d74c58dda2f",
     },
 ];
+
+export const groceriesArchive = [
+    { name: "Potatoes" },
+    { name: "Broccoli" },
+    { name: "Onions" },
+    { name: "Stewing beef" },
+    { name: "Frozen corn" },
+    { name: "Grapes" },
+    { name: "Bread" },
+    { name: "Peanut butter" },
+];
