@@ -23,6 +23,7 @@ const Meal = ({ name }) => {
         removeButton: "text-gray-400 uppercase text-xs mx-1",
         defaultText: "text-gray-300",
         defaultIcon: "inline",
+        mealLink: "hover:pretty-underline",
     };
 
     const removeItem = meal => {
@@ -49,15 +50,16 @@ const Meal = ({ name }) => {
                 <FaPlus />
             </button>
             {meals.length === 0 ? (
-                <p className={classes.defaultText}>
-                    Click the <FaPlusCircle className={classes.defaultIcon} />{" "}
-                    to add a meal
-                </p>
+                <p className={classes.defaultText}>Nothing scheduled</p>
             ) : (
                 <ul>
                     {meals.map(meal => (
                         <li key={meal.uuid}>
-                            <a href={meal.url} target="blank">
+                            <a
+                                className={classes.mealLink}
+                                href={meal.url}
+                                target="blank"
+                            >
                                 {meal.name}
                             </a>
                             <button

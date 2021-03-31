@@ -16,7 +16,7 @@ const AddMeal = ({ setShowModal, handleSelection }) => {
                 onChange={e => handleSelection(e)}
             >
                 <option value="" disabled selected>
-                    Choose a meal...
+                    Choose a dish...
                 </option>
                 {meals.map(meal => (
                     <option value={meal.name}>{meal.name}</option>
