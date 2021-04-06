@@ -1,10 +1,9 @@
-import React, { useContext, useState } from "react";
-import { GroceriesContext } from "../../context/groceries-context";
+import React, { useState } from "react";
 import { groceriesArchive } from "../../data";
 import AddItem from "./AddItem";
+import Item from "./Item";
 
 const ShoppingList = () => {
-    const groceries = useContext(GroceriesContext);
     const [shoppingList, setShoppingList] = useState([]);
     const [showModal, setShowModal] = useState(false);
 
@@ -19,18 +18,30 @@ const ShoppingList = () => {
 
         setShowModal(false);
     };
+
+    const removeItem = currentItem => {
+        const newList = shoppingList.filter(item => item.name !== currentItem);
+        setShoppingList(newList);
+    };
+
+    const classes = {
+        wrapper: "flex flex-col justify-center items-center my-20",
+        heading:
+            "mb-10 text-5xl text-gray-600 font-black uppercase text-center",
+        list: "mb-8",
+    };
     return (
-        <div>
+        <div className={classes.wrapper}>
             {showModal && (
                 <AddItem
                     setShowModal={setShowModal}
                     handleSelection={handleSelection}
                 />
             )}
-            <h1>Shopping List</h1>
-            <ul>
+            <h1 className={classes.heading}>Shopping List</h1>
+            <ul className={classes.list}>
                 {shoppingList.map(item => (
-                    <li>{item.name}</li>
+                    <Item name={item.name} removeItem={removeItem} />
                 ))}
             </ul>
             <button className="btn-primary" onClick={handleClick}>

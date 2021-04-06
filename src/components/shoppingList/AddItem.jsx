@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { GroceriesContext } from "../../context/groceries-context";
-import { MealsContext } from "../../context/meals-context";
 
 const classes = {
     wrapper:

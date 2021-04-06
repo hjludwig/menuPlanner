@@ -27,7 +27,6 @@ const Meal = ({ name }) => {
     };
 
     const removeItem = meal => {
-        console.log(meal);
         const newMeals = meals.filter(item => item.name !== meal.name);
         setMeals(newMeals);
     };
